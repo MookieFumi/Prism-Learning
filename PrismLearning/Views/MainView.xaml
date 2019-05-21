@@ -7,7 +7,10 @@
     Title="{Binding Title}">
     <ContentPage.Content>
         <Grid>
-            <Button Text="Show panel" Command="{Binding PanelCommand}" VerticalOptions="Start"/>
+            <StackLayout VerticalOptions="Start">
+                <Button Text="Go To PlayersView" Command="{Binding GoToPlayersViewCommand}"/>
+                <Button Text="Show panel" Command="{Binding PanelCommand}" />
+            </StackLayout>
             <controls:Panel MessageText="Ei! What do you want?" 
                             AcceptText="Accept" 
                             AcceptCommand="{Binding PanelCommand}"

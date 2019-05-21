@@ -4,6 +4,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using PrismLearning.Services;
+using PrismLearning.Services.DTO;
 using PrismLearning.ViewModels.Base;
 using PrismLearning.Views;
 using Xamarin.Forms;
@@ -23,6 +24,11 @@ namespace PrismLearning.ViewModels
             LoginCommand = new DelegateCommand(async () => await Login(), LoginCanExecute)
                                     .ObservesProperty(() => User)
                                     .ObservesProperty(() => Password);
+
+#if DEBUG
+            User = "user@company.com";
+            Password = "theP@ssword";
+#endif
         }
 
         public DelegateCommand LoginCommand { get; private set; }
@@ -43,10 +49,10 @@ namespace PrismLearning.ViewModels
         {
             try
             {
-                var response = await _loginService.Login(new LoginRequest(User, Password));
+                var response = await _loginService.Login(new LoginRequestDTO(User, Password));
                 if (response.User == User)
                 {
-                    await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainView)}");
+                    await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainView)}");
                 }
             }
             catch (Exception ex)

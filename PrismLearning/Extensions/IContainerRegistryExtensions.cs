@@ -11,11 +11,14 @@ namespace PrismLearning.Extensions
         {
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
+            containerRegistry.RegisterForNavigation<PlayersView, PlayersViewModel>();
         }
 
         public static void AddServices(this IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<ILoginService, LoginService>();
+            containerRegistry.RegisterSingleton<IPlayersService, PlayersService>();
+            containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();
         }
     }
 }
