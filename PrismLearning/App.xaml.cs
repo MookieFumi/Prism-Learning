@@ -1,5 +1,4 @@
-﻿using System;
-using LoginModule.Views;
+﻿using LoginModule.Views;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -32,6 +31,10 @@ namespace PrismLearning
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.WhenAvailable);
+
+            //moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.OnDemand);
+            //var moduleManager = Container.Resolve<IModuleManager>();
+            //moduleManager.LoadModule(nameof(LoginModule.LoginModule));
         }
 
         #region App Events

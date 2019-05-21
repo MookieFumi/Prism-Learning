@@ -14,6 +14,7 @@ We added a Login module to check how works Prism Modules because the main target
 * Add your Prism.Forms flavor (your favourite dependency container). We choose Unity.
 * Move all your services, views and viewmodels to this new assembly.
 * Register all your services, views and viewmodels.
+
 ```csharp
  public class LoginModule : Prism.Modularity.IModule
     {
@@ -29,6 +30,7 @@ We added a Login module to check how works Prism Modules because the main target
         }
     }
 ```
+
 * Register the module on your app (App.cs).
 
 ```csharp
@@ -42,5 +44,9 @@ We added a Login module to check how works Prism Modules because the main target
 
   * **OnDemand.** The module will be initialized when requested.
 
-  * **WhenAvailable.** The module will be initialized when it is availble on application start-up.
+```csharp
+var moduleManager = Container.Resolve<IModuleManager>();
+    moduleManager.LoadModule(nameof(LoginModule.LoginModule));
+```
 
+  * **WhenAvailable.** The module will be initialized when it is availble on application start-up.
