@@ -11,7 +11,7 @@ We added a Login module to check how works Prism Modules because the main target
 ### Steps
 
 * Create a new portable class library (PCL) on your solution
-* Add your Prism.Forms flavor (your favourite dependency container). We choose Unity.
+* Add your Prism.Forms *"flavor"* nuget package (*your favourite dependency container*). In this example, we choose Unity.
 * Move all your services, views and viewmodels to this new assembly.
 * Register all your services, views and viewmodels.
 
@@ -42,11 +42,11 @@ We added a Login module to check how works Prism Modules because the main target
 
 * We can add initialize the module in two different ways:
 
+  * **WhenAvailable.** The module will be initialized when it is availble on application start-up.
+
   * **OnDemand.** The module will be initialized when requested.
 
 ```csharp
 var moduleManager = Container.Resolve<IModuleManager>();
     moduleManager.LoadModule(nameof(LoginModule.LoginModule));
 ```
-
-  * **WhenAvailable.** The module will be initialized when it is availble on application start-up.
