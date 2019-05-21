@@ -28,4 +28,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Services\DTO\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoginModule\LoginModule.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
+using LoginModule.Services;
+using LoginModule.Services.Model;
+using LoginModule.ViewModels.Base;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
-using PrismLearning.Services;
-using PrismLearning.Services.DTO;
-using PrismLearning.ViewModels.Base;
-using PrismLearning.Views;
 using Xamarin.Forms;
 
-namespace PrismLearning.ViewModels
+namespace LoginModule.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
@@ -52,7 +51,7 @@ namespace PrismLearning.ViewModels
                 var response = await _loginService.Login(new LoginRequestDTO(User, Password));
                 if (response.User == User)
                 {
-                    await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(MainView)}");
+                    await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/MainView");
                 }
             }
             catch (Exception ex)

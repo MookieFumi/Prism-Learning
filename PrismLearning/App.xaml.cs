@@ -1,7 +1,9 @@
-﻿using Prism;
+﻿using System;
+using LoginModule.Views;
+using Prism;
 using Prism.Ioc;
+using Prism.Modularity;
 using PrismLearning.Extensions;
-using PrismLearning.Views;
 using Xamarin.Forms;
 
 namespace PrismLearning
@@ -25,6 +27,11 @@ namespace PrismLearning
 
             containerRegistry.AddViews();
             containerRegistry.AddServices();
+        }
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.WhenAvailable);
         }
 
         #region App Events

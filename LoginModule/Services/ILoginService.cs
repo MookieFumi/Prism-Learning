@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using PrismLearning.Services.DTO;
+using LoginModule.Services.Model;
 
-namespace PrismLearning.Services
+namespace LoginModule.Services
 {
     public interface ILoginService
     {

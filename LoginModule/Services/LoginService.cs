@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using PrismLearning.Services.DTO;
+using LoginModule.Services.Model;
 
-namespace PrismLearning.Services
+namespace LoginModule.Services
 {
     public class LoginService : ILoginService
     {
@@ -11,7 +11,7 @@ namespace PrismLearning.Services
             return new LoginResponseDTO
             {
                 User = request.User,
-                Name = "Miguel Angel Martin Hrdez"
+                Name = "Elena Nito Del Bosque"
             };
         }
     }

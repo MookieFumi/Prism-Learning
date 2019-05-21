@@ -1,4 +1,4 @@
-﻿namespace PrismLearning.Services.DTO
+﻿namespace LoginModule.Services.Model
 {
     public class LoginResponseDTO
     {

@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{C6629214-EB70-40D8-A821-76577DF2A448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginModule", "LoginModule\LoginModule.csproj", "{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +62,20 @@ Global
 		{51C20141-98E7-4D14-9C97-E9A489E89D3D}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{51C20141-98E7-4D14-9C97-E9A489E89D3D}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{51C20141-98E7-4D14-9C97-E9A489E89D3D}.Release|iPhone.Build.0 = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9}.Release|iPhone.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9} = {C6629214-EB70-40D8-A821-76577DF2A448}
 	EndGlobalSection
 EndGlobal
