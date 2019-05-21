@@ -1,9 +1,9 @@
 ﻿using Prism;
 using Prism.Ioc;
+using PrismLearning.Extensions;
+using PrismLearning.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PrismLearning
 {
     public partial class App
@@ -16,18 +16,15 @@ namespace PrismLearning
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MainPage)}");
+            await NavigationService.NavigateAsync($"{nameof(LoginView)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
-            containerRegistry.RegisterForNavigation<MainPage>();
-            //containerRegistry.RegisterForNavigation<AboutPage>();
-            //containerRegistry.RegisterForNavigation<AuthorPage>();
-            //containerRegistry.RegisterForNavigation<VersionPage>();
-            //containerRegistry.RegisterForNavigation<ConfigurationPage>();
+            containerRegistry.AddViews();
+            containerRegistry.AddServices();
         }
 
         #region App Events

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView
+   xmlns="http://xamarin.com/schemas/2014/forms"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   x:Class="PrismLearning.Controls.Panel">
+   <ContentView.Content>
+       <Frame
+           Padding="10"
+           BackgroundColor="White"
+           CornerRadius="0"
+           OutlineColor="Black">
+           <StackLayout
+               Spacing="30">
+               <Label
+                   x:Name="_message"
+                   HorizontalTextAlignment="Center" />
+               <StackLayout
+                   Orientation="Horizontal">
+                   <Button
+                       HorizontalOptions="Start"
+                       VerticalOptions="FillAndExpand"
+                       Padding="45,0"
+                       x:Name="_cancel" />
+                   <Button
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       x:Name="_accept" />
+               </StackLayout>
+           </StackLayout>
+       </Frame>
+   </ContentView.Content>
+</ContentView>

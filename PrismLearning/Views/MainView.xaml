@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PrismLearning.Controls;assembly=PrismLearning"
+    x:Class="PrismLearning.Views.MainView"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid>
+            <Button Text="Show panel" Command="{Binding PanelCommand}" VerticalOptions="Start"/>
+            <controls:Panel MessageText="Ei! What do you want?" 
+                            AcceptText="Accept" 
+                            AcceptCommand="{Binding PanelCommand}"
+                            CancelText="Cancel" 
+                            CancelCommand="{Binding PanelCommand}"
+                            IsVisible="{Binding IsPanelVisible}" 
+                            VerticalOptions="End"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
