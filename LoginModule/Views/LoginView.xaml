@@ -18,7 +18,15 @@
             <Entry Text="{Binding User}" Keyboard="Email" Grid.Row="0" Grid.Column="1"/>
             <Label Text="Password"  Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
             <Entry Text="{Binding Password}" IsPassword="true" Grid.Row="1" Grid.Column="1"/>
-            <Button Text="Login" Command="{Binding LoginCommand}" Grid.Row="2" Grid.ColumnSpan="2"></Button>
+            <Button Command="{Binding LoginCommand}" 
+                    Text="Login" 
+                    CornerRadius="20" 
+                    HeightRequest="40"
+                    BackgroundColor="#1a81bc" 
+                    TextColor="White" 
+                    Margin="0,0,0,16"  
+                    Grid.Row="2" 
+                    Grid.ColumnSpan="2" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

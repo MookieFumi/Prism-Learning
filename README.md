@@ -6,38 +6,37 @@ A modular application is an application that is divided into a set of loosely co
 
 ### Description
 
-We added a Login module to check how works Prism Modules because the main target is to encapsulate every service, view and viewmodel inside it.
+We added a Login module to check how works Prism Modules because the main target is to encapsulate every service, view and viewmodel of a functional unit inside it.
 
 ### Steps
 
-* Create a new portable class library (PCL) on your solution
+* Create a new portable class library (PCL) on your solution.
 * Add your Prism.Forms *"flavor"* nuget package (*your favourite dependency container*). In this example, we choose Unity.
-* Move all your services, views and viewmodels to this new assembly.
+* Move all your services, views and viewmodels of a functional unit to this new assembly.
 * Register all your services, views and viewmodels.
 
 ```csharp
  public class LoginModule : Prism.Modularity.IModule
+{
+    public void OnInitialized(IContainerProvider containerProvider)
     {
-        public void OnInitialized(IContainerProvider containerProvider)
-        {
-
-        }
-
-        public void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
-            containerRegistry.RegisterSingleton<ILoginService, LoginService>();
-        }
     }
+
+    public void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+        containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+        containerRegistry.RegisterSingleton<ILoginService, LoginService>();
+    }
+}
 ```
 
 * Register the module on your app (App.cs).
 
 ```csharp
  protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
-        {
-            moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.WhenAvailable);
-        }
+{
+    moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.WhenAvailable);
+}
 ```
 
 * We can add initialize the module in two different ways:
@@ -48,5 +47,5 @@ We added a Login module to check how works Prism Modules because the main target
 
 ```csharp
 var moduleManager = Container.Resolve<IModuleManager>();
-    moduleManager.LoadModule(nameof(LoginModule.LoginModule));
+moduleManager.LoadModule(nameof(LoginModule.LoginModule));
 ```
