@@ -5,5 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="PrismLearning.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="Poppins">
+                <On Platform="Android" Value="Poppins-Regular.ttf#Poppins" />
+                <On Platform="iOS" Value="Poppins-Regular" />
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

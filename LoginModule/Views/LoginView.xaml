@@ -24,30 +24,35 @@
                     Height="1*" />
             </Grid.RowDefinitions>
             <Label
+                FontFamily="{StaticResource Poppins}"
                 Text="User"
                 Grid.Row="0"
                 Grid.Column="0"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" />
             <Entry
+                FontFamily="{StaticResource Poppins}"
                 Text="{Binding User}"
                 Keyboard="Email"
                 Grid.Row="0"
                 Grid.Column="1"
                 VerticalOptions="Center" />
             <Label
+                FontFamily="{StaticResource Poppins}"
                 Text="Password"
                 Grid.Row="1"
                 Grid.Column="0"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" />
             <Entry
+                FontFamily="{StaticResource Poppins}"
                 Text="{Binding Password}"
                 IsPassword="true"
                 Grid.Row="1"
                 Grid.Column="1"
                 VerticalOptions="Center" />
             <Button
+                FontFamily="{StaticResource Poppins}"
                 Command="{Binding LoginCommand}"
                 Text="Login"
                 CornerRadius="10"
