@@ -16,7 +16,7 @@ We added a Login module to check how works Prism Modules because the main target
 * Register all your services, views and viewmodels.
 
 ```csharp
- public class LoginModule : Prism.Modularity.IModule
+public class LoginModule : Prism.Modularity.IModule
 {
     public void OnInitialized(IContainerProvider containerProvider)
     {
@@ -33,7 +33,7 @@ We added a Login module to check how works Prism Modules because the main target
 * Register the module on your app (App.cs).
 
 ```csharp
- protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
 {
     moduleCatalog.AddModule<LoginModule.LoginModule>(InitializationMode.WhenAvailable);
 }

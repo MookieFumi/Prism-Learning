@@ -11,13 +11,14 @@ namespace PrismLearning.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private bool _isPanelVisible = false;
+        private bool _isFullscreenLoading = false;
 
         public MainViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService, dialogService)
         {
             Title = "Main view";
 
             PanelCommand = new DelegateCommand(() => IsPanelVisible = !IsPanelVisible);
-
+            ShowLoadingCommand = new DelegateCommand(async () => await ShowLoading());
             GoToPlayersViewCommand = new DelegateCommand(async () => await GoToPlayersView());
         }
 
@@ -27,12 +28,32 @@ namespace PrismLearning.ViewModels
             set { SetProperty(ref _isPanelVisible, value); }
         }
 
+        public bool IsFullscreenLoading
+        {
+            get { return _isFullscreenLoading; }
+            set { SetProperty(ref _isFullscreenLoading, value); }
+        }
+
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
+        public DelegateCommand ShowLoadingCommand { get; private set; }
 
         private async Task GoToPlayersView()
         {
             await NavigationService.NavigateAsync(nameof(PlayersView));
+        }
+
+        private async Task ShowLoading()
+        {
+            IsFullscreenLoading = true;
+            await Task.Delay(2000);
+            IsFullscreenLoading = false;
+        }
+
+        public override async void OnNavigatingTo(INavigationParameters parameters)
+        {
+            base.OnNavigatingTo(parameters);
+            await ShowLoading();
         }
     }
 }
