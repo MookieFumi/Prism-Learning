@@ -2,31 +2,61 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="LoginModule.Views.LoginView" >
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
+    x:Class="LoginModule.Views.LoginView">
     <ContentPage.Content>
-       <Grid Padding="10" VerticalOptions="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-            <Label Text="User" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
-            <Entry Text="{Binding User}" Keyboard="Email" Grid.Row="0" Grid.Column="1"/>
-            <Label Text="Password"  Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
-            <Entry Text="{Binding Password}" IsPassword="true" Grid.Row="1" Grid.Column="1"/>
-            <Button Command="{Binding LoginCommand}" 
-                    Text="Login" 
-                    CornerRadius="20" 
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc" 
-                    TextColor="White" 
-                    Margin="0,0,0,16"  
-                    Grid.Row="2" 
-                    Grid.ColumnSpan="2" />
+        <Grid
+            Padding="10"
+            VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="1*" />
+                <ColumnDefinition
+                    Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="1*" />
+                <RowDefinition
+                    Height="1*" />
+                <RowDefinition
+                    Height="1*" />
+            </Grid.RowDefinitions>
+            <Label
+                Text="User"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry
+                Text="{Binding User}"
+                Keyboard="Email"
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Center" />
+            <Label
+                Text="Password"
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry
+                Text="{Binding Password}"
+                IsPassword="true"
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalOptions="Center" />
+            <Button
+                Command="{Binding LoginCommand}"
+                Text="Login"
+                CornerRadius="10"
+                HeightRequest="40"
+                BackgroundColor="#1a81bc"
+                TextColor="White"
+                Margin="0,0,0,16"
+                Grid.Row="2"
+                Grid.ColumnSpan="2" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
