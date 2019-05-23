@@ -1,10 +1,14 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace PrismLearning.Controls
 {
-    public class BlinkingBoxView : BoxView
+    public partial class BlinkingBoxView : BoxView
     {
+        public BlinkingBoxView()
+        {
+            InitializeComponent();
+        }
+
         volatile bool isBlinking;
 
         public static readonly BindableProperty BlinkProperty = BindableProperty.Create(
@@ -16,10 +20,7 @@ namespace PrismLearning.Controls
 
         public bool Blink
         {
-            get
-            {
-                return (bool)GetValue(BlinkProperty);
-            }
+            get => (bool)GetValue(BlinkProperty);
             set
             {
                 SetValue(BlinkProperty, value);
@@ -35,10 +36,7 @@ namespace PrismLearning.Controls
 
         public uint BlinkDuration
         {
-            get
-            {
-                return (uint)GetValue(BlinkDurationProperty);
-            }
+            get => (uint)GetValue(BlinkDurationProperty);
             set
             {
                 SetValue(BlinkDurationProperty, value);

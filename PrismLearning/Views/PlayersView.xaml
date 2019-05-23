@@ -42,8 +42,6 @@
                                 Source="http://asucocto.org/img/profile/default.png"
                                 Aspect="AspectFit" />
                             <controls:BlinkingBoxView
-                                BlinkDuration = "1000"
-                                Blink = "true"
                                 BackgroundColor="#cccccc"
                                 Grid.Column="0"
                                 Grid.Row="1"
@@ -54,12 +52,8 @@
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2">
                                 <controls:BlinkingBoxView
-                                    BlinkDuration = "1000"
-                                    Blink = "true"
                                     BackgroundColor="#cccccc" />
                                 <controls:BlinkingBoxView
-                                    BlinkDuration = "1000"
-                                    Blink = "true"
                                     BackgroundColor="#cccccc" />
                             </StackLayout>
                         </Grid>
