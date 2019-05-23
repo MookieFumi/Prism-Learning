@@ -45,5 +45,19 @@ namespace PrismLearning.ViewModels
             IsLoading = false;
             base.OnNavigatingTo(parameters);
         }
+
+        public override async void OnResume()
+        {
+            base.OnResume();
+            IsLoading = true;
+            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
+            IsLoading = false;
+        }
+
+        public override void OnSleep()
+        {
+            base.OnSleep();
+            Players.Clear();
+        }
     }
 }

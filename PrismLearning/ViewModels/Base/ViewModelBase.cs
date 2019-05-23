@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 
 namespace PrismLearning.ViewModels.Base
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IApplicationLifecycleAware
     {
         protected readonly INavigationService NavigationService;
         protected readonly IPageDialogService DialogService;
@@ -46,6 +47,16 @@ namespace PrismLearning.ViewModels.Base
         public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
             //throw new NotImplementedException();
+        }
+
+        public virtual void OnResume()
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        public virtual void OnSleep()
+        {
+            //throw new System.NotImplementedException();
         }
     }
 }

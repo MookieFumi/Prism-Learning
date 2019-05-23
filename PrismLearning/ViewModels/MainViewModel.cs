@@ -12,6 +12,7 @@ namespace PrismLearning.ViewModels
     {
         private bool _isPanelVisible = false;
         private bool _isFullscreenLoading = false;
+        private string _searchText;
 
         public MainViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -34,6 +35,12 @@ namespace PrismLearning.ViewModels
             set { SetProperty(ref _isFullscreenLoading, value); }
         }
 
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { SetProperty(ref _searchText, value); }
+        }
+
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
         public DelegateCommand ShowLoadingCommand { get; private set; }
@@ -54,6 +61,16 @@ namespace PrismLearning.ViewModels
         {
             base.OnNavigatingTo(parameters);
             await ShowLoading();
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+        }
+
+        public override void OnSleep()
+        {
+            base.OnSleep();
         }
     }
 }
