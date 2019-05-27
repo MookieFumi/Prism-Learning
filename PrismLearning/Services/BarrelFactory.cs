@@ -2,7 +2,7 @@
 
 namespace PrismLearning.Services
 {
-    public static class BarrelModelFactory
+    public static class BarrelFactory
     {
         public static IBarrel Build(bool debugging)
         {

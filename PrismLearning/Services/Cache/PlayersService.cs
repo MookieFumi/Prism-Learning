@@ -6,14 +6,14 @@ using MonkeyCache;
 using PrismLearning.DomainService.Abstractions;
 using PrismLearning.DomainService.Abstractions.DTO;
 
-namespace PrismLearning.Services
+namespace PrismLearning.Services.Cache
 {
-    public class PlayersServiceCache : IPlayersService
+    public class PlayersService : IPlayersService
     {
         private readonly IBarrel _barrel;
         private readonly IPlayersService _playersService;
 
-        public PlayersServiceCache(IBarrel barrel, IPlayersService playersService)
+        public PlayersService(IBarrel barrel, IPlayersService playersService)
         {
             _barrel = barrel;
             _playersService = playersService;

@@ -28,6 +28,7 @@
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
     <Folder Include="Controls\" />
+    <Folder Include="Services\Cache\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoginModule\LoginModule.csproj" />

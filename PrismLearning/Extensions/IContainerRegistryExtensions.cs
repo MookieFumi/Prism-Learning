@@ -20,13 +20,13 @@ namespace PrismLearning.Extensions
         {
             IBarrel barrel;
 #if DEBUG
-            barrel = BarrelModelFactory.Build(debugging: false);
+            barrel = BarrelFactory.Build(debugging: true);
 #else
-            barrel = BarrelModelFactory.Build(debugging: true);
+            barrel = BarrelModelFactory.Build(debugging: false);
 
 #endif
             containerRegistry.RegisterInstance(barrel);
-            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(barrel, new PlayersService()));
+            containerRegistry.RegisterInstance<IPlayersService>(new Services.Cache.PlayersService(barrel, new PlayersService()));
 
             containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();
         }
