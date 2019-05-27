@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MonkeyCache;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
@@ -13,14 +13,18 @@ namespace PrismLearning.ViewModels
         private bool _isPanelVisible = false;
         private bool _isFullscreenLoading = false;
         private string _searchText;
+        private readonly IBarrel _barrel;
 
-        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService, dialogService)
+        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IBarrel barrel) : base(navigationService, dialogService)
         {
             Title = "Main view";
+
+            _barrel = barrel;
 
             PanelCommand = new DelegateCommand(() => IsPanelVisible = !IsPanelVisible);
             ShowLoadingCommand = new DelegateCommand(async () => await ShowLoading());
             GoToPlayersViewCommand = new DelegateCommand(async () => await GoToPlayersView());
+            ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
         }
 
         public bool IsPanelVisible
@@ -44,6 +48,7 @@ namespace PrismLearning.ViewModels
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
         public DelegateCommand ShowLoadingCommand { get; private set; }
+        public DelegateCommand ClearCacheCommand { get; private set; }
 
         private async Task GoToPlayersView()
         {

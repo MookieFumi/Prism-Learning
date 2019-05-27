@@ -25,7 +25,7 @@ namespace PrismLearning.Extensions
             barrel = BarrelModelFactory.Build(debugging: false);
 
 #endif
-            containerRegistry.RegisterInstance(barrel);
+            containerRegistry.RegisterInstance<IBarrel>(barrel);
             containerRegistry.RegisterInstance<IPlayersService>(new Services.Cache.PlayersService(barrel, new PlayersService()));
 
             containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();

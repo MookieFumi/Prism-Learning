@@ -7,7 +7,6 @@ namespace PrismLearning.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //throw new System.NotImplementedException();
         }
     }
 }

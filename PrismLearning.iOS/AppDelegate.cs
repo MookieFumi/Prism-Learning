@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using FFImageLoading.Forms.Platform;
+using Foundation;
 using UIKit;
 
 namespace PrismLearning.iOS
@@ -21,6 +22,9 @@ namespace PrismLearning.iOS
             global::Xamarin.Forms.Forms.SetFlags("Visual_Experimental");
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.Forms.FormsMaterial.Init();
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            CachedImageRenderer.InitImageSourceHandler();
 
             LoadApplication(new App(new IOSInitializer()));
 

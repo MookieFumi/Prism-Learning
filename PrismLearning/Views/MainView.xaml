@@ -55,6 +55,14 @@
                     Margin="0,0,0,16"
                     Text="Show Loading"
                     Command="{Binding ShowLoadingCommand}" />
+                <Button
+                    CornerRadius="10"
+                    HeightRequest="40"
+                    BackgroundColor="#1a81bc"
+                    TextColor="White"
+                    Margin="0,0,0,16"
+                    Text="Clear cache"
+                    Command="{Binding ClearCacheCommand}" />
             </StackLayout>
             <controls:Panel
                 MessageText="Ei! What do you want?"

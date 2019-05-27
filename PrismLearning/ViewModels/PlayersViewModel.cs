@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using Prism.Navigation;
 using Prism.Services;
 using PrismLearning.DomainService.Abstractions;
@@ -40,8 +39,8 @@ namespace PrismLearning.ViewModels
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
             IsLoading = true;
-            await Task.Delay(2000);
-            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers("hou"));
+            //await Task.Delay(2000);
+            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
             IsLoading = false;
             base.OnNavigatingTo(parameters);
         }
@@ -50,7 +49,7 @@ namespace PrismLearning.ViewModels
         {
             base.OnResume();
             IsLoading = true;
-            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers("hou"));
+            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
             IsLoading = false;
         }
 

@@ -20,6 +20,7 @@
     <PackageReference Include="Xamarin.Forms.EasyLoading" Version="1.0.2" />
     <PackageReference Include="MonkeyCache.LiteDB" Version="1.2.0-beta" />
     <PackageReference Include="MonkeyCache.FileStore" Version="1.2.0-beta" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -29,6 +30,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Controls\" />
     <Folder Include="Services\Cache\" />
+    <Folder Include="Services\Cache\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoginModule\LoginModule.csproj" />

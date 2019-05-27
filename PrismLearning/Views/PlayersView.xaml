@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ll="clr-namespace:Xamarin.Forms.EasyLoading;assembly=Xamarin.Forms.EasyLoading"
     xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-     xmlns:controls="clr-namespace:PrismLearning.Controls;assembly=PrismLearning"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:controls="clr-namespace:PrismLearning.Controls;assembly=PrismLearning"
     ios:Page.UseSafeArea="true"
     x:Class="PrismLearning.Views.PlayersView"
     Title="{Binding Title}">
@@ -64,60 +64,140 @@
                 Grid.Row="1"
                 Margin="20"
                 HasUnevenRows="true"
-                SeparatorVisibility="None"
+                SeparatorVisibility="Default"
                 ItemsSource="{Binding Players}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <custom:PancakeView
-                                Padding="10"
-                                Margin="10"
-                                BackgroundColor="#aaeeeeee"
-                                CornerRadius="20,20,20,20"
-                                HorizontalOptions="FillAndExpand"
-                                IsClippedToBounds="true"
-                                BorderIsDashed="true">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition
-                                            Height="80" />
-                                        <RowDefinition
-                                            Height="20" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition
-                                            Width="100" />
-                                        <ColumnDefinition
-                                            Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Image
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Source="{Binding Image}"
-                                        Aspect="AspectFit" />
-                                    <Label
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                        FontSize="Small"
-                                        Text="{Binding Name}"
-                                        LineBreakMode="TailTruncation"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="End" />
-                                    <StackLayout
-                                        Grid.RowSpan="2"
-                                        Grid.Column="1"
-                                        Grid.ColumnSpan="2">
-                                        <Label
-                                            Text="P.p.g"
-                                            FontSize="Small"
-                                            LineBreakMode="TailTruncation" />
-                                        <Label
-                                            Text="{Binding PointsPerGame}"
-                                            FontSize="Small"
-                                            LineBreakMode="TailTruncation" />
-                                    </StackLayout>
-                                </Grid>
-                            </custom:PancakeView>
+                            <Grid
+                                HeightRequest="170"
+                                Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="24" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                    <RowDefinition
+                                        Height="20" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="*" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding Name, StringFormat='Name: {0}'}"
+                                    FontSize="20" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding GamesPlayed, StringFormat='Games #{0}'}"
+                                    FontSize="12"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding TeamName, StringFormat='Team: {0}'}"
+                                    FontSize="12"
+                                    TextColor="Gray" />
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Grid.RowSpan="3"
+                                    Source="{Binding Image}"
+                                    Aspect="AspectFit" />                              
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="MINUTES P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="POINTS P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="REBOUND P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding MinutesPerGame}"
+                                    FontSize="18" />
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding PointsPerGame}"
+                                    FontSize="18" />
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding ReboundsPerGame}"
+                                    FontSize="18" />
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="ASSISTENCES P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="STEALS P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="BLOCKS P.G"
+                                    FontSize="10"
+                                    TextColor="Gray" />
+                                <Label
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding AssistsPerGame}"
+                                    FontSize="18" />
+                                <Label
+                                    Grid.Row="6"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding StealsPerGame}"
+                                    FontSize="18" />
+                                <Label
+                                    Grid.Row="6"
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding BlocksPerGame}"
+                                    FontSize="18" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

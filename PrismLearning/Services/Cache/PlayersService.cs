@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MonkeyCache;
 using PrismLearning.DomainService.Abstractions;
 using PrismLearning.DomainService.Abstractions.DTO;
+using PrismLearning.Services.Cache.Base;
 
 namespace PrismLearning.Services.Cache
 {
-    public class PlayersService : IPlayersService
+    public class PlayersService : CacheBaseService, IPlayersService
     {
         private readonly IBarrel _barrel;
         private readonly IPlayersService _playersService;
@@ -28,19 +27,27 @@ namespace PrismLearning.Services.Cache
                 return _barrel.Get<IEnumerable<PlayerDTO>>(key: key);
             }
 
-            var result = await _playersService.GetPlayers(team);
+            var data = await _playersService.GetPlayers(team);
 
-            if (result.Any())
-            {
-                _barrel.Add(key: key, data: result, expireIn: TimeSpan.FromDays(1));
-            }
+            AddToCache(_barrel, key, data);
 
-            return result;
+            return data;
         }
 
         public async Task<IEnumerable<PlayerDTO>> GetPlayers()
         {
-            return await _playersService.GetPlayers();
+            var key = $"{this.ToString()}/{nameof(GetPlayers)}";
+
+            if (!_barrel.IsExpired(key: key))
+            {
+                return _barrel.Get<IEnumerable<PlayerDTO>>(key: key);
+            }
+
+            var data = await _playersService.GetPlayers();
+
+            AddToCache(_barrel, key, data);
+
+            return data;
         }
     }
 }
