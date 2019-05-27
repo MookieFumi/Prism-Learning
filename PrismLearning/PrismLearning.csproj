@@ -18,6 +18,8 @@
     <PackageReference Include="Refit" Version="4.6.107" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.0.21" />
     <PackageReference Include="Xamarin.Forms.EasyLoading" Version="1.0.2" />
+    <PackageReference Include="MonkeyCache.LiteDB" Version="1.2.0-beta" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="1.2.0-beta" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

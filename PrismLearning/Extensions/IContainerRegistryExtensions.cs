@@ -15,7 +15,7 @@ namespace PrismLearning.Extensions
 
         public static void AddServices(this IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IPlayersService, PlayersService>();
+            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceDecorator(new PlayersService()));
             containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();
         }
     }

@@ -50,7 +50,7 @@ namespace PrismLearning.ViewModels
         {
             base.OnResume();
             IsLoading = true;
-            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
+            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers("hou"));
             IsLoading = false;
         }
 
