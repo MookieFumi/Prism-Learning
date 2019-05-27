@@ -18,16 +18,16 @@ namespace PrismLearning.Extensions
 
         public static void AddServices(this IContainerRegistry containerRegistry)
         {
+            IBarrel barrel;
 #if DEBUG
-            MonkeyCache.FileStore.Barrel.ApplicationId = "my_fileStore_applicationId";
-            containerRegistry.RegisterInstance(MonkeyCache.FileStore.Barrel.Current);
-            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(MonkeyCache.FileStore.Barrel.Current, new PlayersService()));
+            barrel = BarrelModelFactory.Build(debugging: false);
 #else
-            MonkeyCache.LiteDB.Barrel.ApplicationId = "my_liteDb_applicationId";
-            containerRegistry.RegisterInstance(MonkeyCache.LiteDB.Barrel.Current);
-            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(MonkeyCache.LiteDB.Barrel.Current, new PlayersService()));
+            barrel = BarrelModelFactory.Build(debugging: true);
+
 #endif
-            //containerRegistry.RegisterInstance<IPlayersService>(new PlayrsServiceCache(new PlayersService()));
+            containerRegistry.RegisterInstance(barrel);
+            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(barrel, new PlayersService()));
+
             containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();
         }
     }

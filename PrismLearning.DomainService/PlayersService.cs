@@ -23,7 +23,5 @@ namespace PrismLearning.DomainService
 
             return await service.GetPlayers();
         }
-
-
     }
 }
