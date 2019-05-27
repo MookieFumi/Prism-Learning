@@ -28,9 +28,10 @@
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
     <Folder Include="Controls\" />
-    <Folder Include="Services\DTO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoginModule\LoginModule.csproj" />
+    <ProjectReference Include="..\PrismLearning.DomainService\PrismLearning.DomainService.csproj" />
+    <ProjectReference Include="..\PrismLearning.DomainService.Abstractions\PrismLearning.DomainService.Abstractions.csproj" />
   </ItemGroup>
 </Project>

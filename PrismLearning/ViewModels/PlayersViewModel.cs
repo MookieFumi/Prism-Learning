@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Prism.Navigation;
 using Prism.Services;
-using PrismLearning.Services;
-using PrismLearning.Services.DTO;
+using PrismLearning.DomainService.Abstractions;
+using PrismLearning.DomainService.Abstractions.DTO;
 using PrismLearning.ViewModels.Base;
 
 namespace PrismLearning.ViewModels

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PrismLearning.Services.DTO;
+using PrismLearning.DomainService.Abstractions;
+using PrismLearning.DomainService.Abstractions.DTO;
 
-namespace PrismLearning.Services
+namespace PrismLearning.DomainService
 {
     public class TeamsService : ITeamsService
     {

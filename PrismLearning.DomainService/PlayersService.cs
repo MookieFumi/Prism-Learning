@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PrismLearning.Services.DTO;
+using PrismLearning.DomainService.Abstractions;
+using PrismLearning.DomainService.Abstractions.DTO;
 using Refit;
 
-namespace PrismLearning.Services
+namespace PrismLearning.DomainService
 {
     public class PlayersService : IPlayersService
     {
@@ -18,12 +19,6 @@ namespace PrismLearning.Services
 
         public async Task<IEnumerable<PlayerDTO>> GetPlayers()
         {
-            ////Dev handles checking if cache is expired
-            //if (!Barrel.Current.IsExpired(key: url))
-            //{
-            //    return Barrel.Current.Get<IEnumerable<Monkey>>(key: url);
-            //}
-
             var service = RestService.For<IPlayersService>(baseUrl);
 
             return await service.GetPlayers();

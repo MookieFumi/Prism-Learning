@@ -1,4 +1,4 @@
-﻿namespace PrismLearning.Services.DTO
+﻿namespace PrismLearning.DomainService.Abstractions.DTO
 {
     public class TeamDTO
     {

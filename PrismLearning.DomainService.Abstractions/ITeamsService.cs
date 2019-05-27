@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PrismLearning.Services.DTO;
+using PrismLearning.DomainService.Abstractions.DTO;
 
-namespace PrismLearning.Services
+namespace PrismLearning.DomainService.Abstractions
 {
     public interface ITeamsService
     {

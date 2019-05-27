@@ -17,12 +17,6 @@ namespace PrismLearning
         {
             InitializeComponent();
 
-#if DEBUG
-            MonkeyCache.FileStore.Barrel.ApplicationId = "my_fileStore_applicationId";
-#else
-             MonkeyCache.LiteDB.Barrel.ApplicationId = "my_liteDb_applicationId";
-#endif
-
             await NavigationService.NavigateAsync($"{nameof(LoginView)}");
         }
 

@@ -1,4 +1,7 @@
-﻿using Prism.Ioc;
+﻿using MonkeyCache;
+using Prism.Ioc;
+using PrismLearning.DomainService;
+using PrismLearning.DomainService.Abstractions;
 using PrismLearning.Services;
 using PrismLearning.ViewModels;
 using PrismLearning.Views;
@@ -15,7 +18,16 @@ namespace PrismLearning.Extensions
 
         public static void AddServices(this IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceDecorator(new PlayersService()));
+#if DEBUG
+            MonkeyCache.FileStore.Barrel.ApplicationId = "my_fileStore_applicationId";
+            containerRegistry.RegisterInstance(MonkeyCache.FileStore.Barrel.Current);
+            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(MonkeyCache.FileStore.Barrel.Current, new PlayersService()));
+#else
+            MonkeyCache.LiteDB.Barrel.ApplicationId = "my_liteDb_applicationId";
+            containerRegistry.RegisterInstance(MonkeyCache.LiteDB.Barrel.Current);
+            containerRegistry.RegisterInstance<IPlayersService>(new PlayersServiceCache(MonkeyCache.LiteDB.Barrel.Current, new PlayersService()));
+#endif
+            //containerRegistry.RegisterInstance<IPlayersService>(new PlayrsServiceCache(new PlayersService()));
             containerRegistry.RegisterSingleton<ITeamsService, TeamsService>();
         }
     }
