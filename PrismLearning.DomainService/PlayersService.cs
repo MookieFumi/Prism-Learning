@@ -10,18 +10,21 @@ namespace PrismLearning.DomainService
     {
         private const string baseUrl = "https://nba-players.herokuapp.com";
 
+        private readonly IPlayersService _service;
+
+        public PlayersService()
+        {
+            _service = RestService.For<IPlayersService>(baseUrl);
+        }
+
         public async Task<IEnumerable<PlayerDTO>> GetPlayers(string team)
         {
-            var service = RestService.For<IPlayersService>(baseUrl);
-
-            return await service.GetPlayers(team);
+            return await _service.GetPlayers(team);
         }
 
         public async Task<IEnumerable<PlayerDTO>> GetPlayers()
         {
-            var service = RestService.For<IPlayersService>(baseUrl);
-
-            return await service.GetPlayers();
+            return await _service.GetPlayers();
         }
     }
 }
