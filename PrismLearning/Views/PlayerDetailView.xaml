@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+    x:Class="PrismLearning.Views.PlayerDetailView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xamanimation:StoryBoard
+                x:Key="ArtItemContentAnimation"
+                Target="{x:Reference ArtItemContent}">
+                <xamanimation:TranslateToAnimation
+                    TranslateY="0"
+                    Duration="300" />
+                <xamanimation:FadeInAnimation />
+            </xamanimation:StoryBoard>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger
+            Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource ArtItemContentAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image
+                sharedTransitions:Transition.Tag="{Binding Player.Image}"
+                Source="{Binding Player.Image}"
+                Aspect="AspectFit" />
+            <Grid
+                x:Name="ArtItemContent"
+                HeightRequest="170"
+                Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="20" />
+                    <RowDefinition
+                        Height="20" />
+                    <RowDefinition
+                        Height="20" />
+                    <RowDefinition
+                        Height="20" />
+                    <RowDefinition
+                        Height="20" />
+                    <RowDefinition
+                        Height="20" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding Player.Name, StringFormat='Name: {0}'}"
+                    FontSize="20" />
+                <Label
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding Player.GamesPlayed, StringFormat='Games #{0}'}"
+                    FontSize="12"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding Player.TeamName, StringFormat='Team: {0}'}"
+                    FontSize="12"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="MINUTES P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="POINTS P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Text="REBOUND P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.MinutesPerGame}"
+                    FontSize="18" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.PointsPerGame}"
+                    FontSize="18" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.ReboundsPerGame}"
+                    FontSize="18" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="ASSISTENCES P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="STEALS P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Text="BLOCKS P.G"
+                    FontSize="10"
+                    TextColor="Gray" />
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.AssistsPerGame}"
+                    FontSize="18" />
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.StealsPerGame}"
+                    FontSize="18" />
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Text="{Binding Player.BlocksPerGame}"
+                    FontSize="18" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

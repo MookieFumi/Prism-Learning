@@ -14,6 +14,7 @@ namespace PrismLearning.Extensions
         {
             containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
             containerRegistry.RegisterForNavigation<PlayersView, PlayersViewModel>();
+            containerRegistry.RegisterForNavigation<PlayerDetailView, PlayerDetailViewModel>();
         }
 
         public static void AddServices(this IContainerRegistry containerRegistry)
