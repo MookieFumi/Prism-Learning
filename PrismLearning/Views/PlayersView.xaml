@@ -15,49 +15,124 @@
             ll:LoadingLayout.RepeatCount="5">
             <ll:LoadingLayout.LoadingTemplate>
                 <DataTemplate>
-                    <custom:PancakeView
-                        Padding="10"
-                        Margin="10"
-                        BackgroundColor="#aaeeeeee"
-                        CornerRadius="20,20,20,20"
-                        HorizontalOptions="FillAndExpand"
-                        IsClippedToBounds="true"
-                        BorderIsDashed="true">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition
-                                    Height="80" />
-                                <RowDefinition
-                                    Height="20" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition
-                                    Width="100" />
-                                <ColumnDefinition
-                                    Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Image
-                                Grid.Column="0"
-                                Grid.Row="0"
-                                Source="http://asucocto.org/img/profile/default.png"
-                                Aspect="AspectFit" />
-                            <controls:BlinkingBoxView
-                                BackgroundColor="#cccccc"
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                HorizontalOptions="Center"
-                                VerticalOptions="End" />
-                            <StackLayout
-                                Grid.RowSpan="2"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2">
-                                <controls:BlinkingBoxView
-                                    BackgroundColor="#cccccc" />
-                                <controls:BlinkingBoxView
-                                    BackgroundColor="#cccccc" />
-                            </StackLayout>
-                        </Grid>
-                    </custom:PancakeView>
+                    <Grid
+                        HeightRequest="170"
+                        Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="24" />
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="20" />
+                            <RowDefinition
+                                Height="20" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.RowSpan="3"
+                            Source="http://asucocto.org/img/profile/default.png"
+                            Aspect="AspectFit" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Text="MINUTES P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Text="POINTS P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            HorizontalOptions="Center"
+                            Text="REBOUND P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            HorizontalOptions="Center" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            HorizontalOptions="Center" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            HorizontalOptions="Center" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Text="ASSISTENCES P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Text="STEALS P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            HorizontalOptions="Center"
+                            Text="BLOCKS P.G"
+                            FontSize="10"
+                            TextColor="Gray" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            HorizontalOptions="Center" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            HorizontalOptions="Center" />
+                        <controls:BlinkingBoxView
+                            BackgroundColor="#cccccc"
+                            Grid.Row="6"
+                            Grid.Column="2"
+                            HorizontalOptions="Center" />
+                    </Grid>
                 </DataTemplate>
             </ll:LoadingLayout.LoadingTemplate>
             <ListView
@@ -118,7 +193,7 @@
                                     Grid.Column="2"
                                     Grid.RowSpan="3"
                                     Source="{Binding Image}"
-                                    Aspect="AspectFit" />                              
+                                    Aspect="AspectFit" />
                                 <Label
                                     Grid.Row="3"
                                     Grid.Column="0"
