@@ -1,5 +1,4 @@
-﻿using Plugin.SharedTransitions;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace PrismLearning.Views
 {
@@ -8,8 +7,6 @@ namespace PrismLearning.Views
         public PlayersView()
         {
             InitializeComponent();
-            SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
-            SharedTransitionNavigationPage.SetSharedTransitionDuration(this, 500);
         }
     }
 }

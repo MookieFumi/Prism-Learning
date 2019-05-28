@@ -21,8 +21,6 @@
     <PackageReference Include="MonkeyCache.LiteDB" Version="1.2.0-beta" />
     <PackageReference Include="MonkeyCache.FileStore" Version="1.2.0-beta" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="1.0.0.1" />
-    <PackageReference Include="Xamanimation" Version="1.2.0" />
     <PackageReference Include="LiveXAML" Version="2.1.72" />
   </ItemGroup>
   <ItemGroup>
