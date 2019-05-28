@@ -136,9 +136,6 @@
     <PackageReference Include="Refit">
       <Version>4.6.107</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms.PancakeView">
-      <Version>1.0.21</Version>
-    </PackageReference>
     <PackageReference Include="MonkeyCache.LiteDB">
       <Version>1.2.0-beta</Version>
     </PackageReference>
