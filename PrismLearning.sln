@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.DomainService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.DomainService.Abstractions", "PrismLearning.DomainService.Abstractions\PrismLearning.DomainService.Abstractions.csproj", "{7CEBDC2A-A838-40AB-BB33-D5B382A2606D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.DomainService.Test", "PrismLearning.DomainService.Test\PrismLearning.DomainService.Test.csproj", "{C60CF537-6254-450A-99C3-F022C7ECFCD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,18 @@ Global
 		{7CEBDC2A-A838-40AB-BB33-D5B382A2606D}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{7CEBDC2A-A838-40AB-BB33-D5B382A2606D}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{7CEBDC2A-A838-40AB-BB33-D5B382A2606D}.Release|iPhone.Build.0 = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9} = {C6629214-EB70-40D8-A821-76577DF2A448}
