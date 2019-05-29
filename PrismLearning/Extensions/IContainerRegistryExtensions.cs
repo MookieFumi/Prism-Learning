@@ -23,7 +23,7 @@ namespace PrismLearning.Extensions
 #if DEBUG
             barrel = BarrelFactory.Build(debugging: true);
 #else
-            barrel = BarrelModelFactory.Build(debugging: false);
+            barrel = BarrelFactory.Build(debugging: false);
 
 #endif
             containerRegistry.RegisterInstance<IBarrel>(barrel);
