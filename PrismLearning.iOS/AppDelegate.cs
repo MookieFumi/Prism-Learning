@@ -21,7 +21,6 @@ namespace PrismLearning.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("Visual_Experimental", "CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.Forms.FormsMaterial.Init();
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
