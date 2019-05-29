@@ -8,31 +8,25 @@
             <Label
                 Text="Select your Team"
                 HorizontalTextAlignment="Center" />
-            <ScrollView
-                Orientation="Horizontal"
-                HorizontalScrollBarVisibility="Default"
-                VerticalScrollBarVisibility="Never">
-                <StackLayout
-                    x:Name="Highlights"
-                    Padding="20, 0, 0, 36"
-                    Orientation="Horizontal"
-                    BindableLayout.ItemsSource="{Binding Teams}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                x:Name="HighlightTemplate">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="*" />
-                                </Grid.RowDefinitions>
-                                <Image
-                                    Source="{Binding Image}"
-                                    Aspect="AspectFit" />
-                            </Grid>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </ScrollView>
+            <CollectionView
+                HeightRequest="80"
+                ItemsSource="{Binding Teams}"
+                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="60" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Source="{Binding Image}"
+                                Aspect="AspectFit" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

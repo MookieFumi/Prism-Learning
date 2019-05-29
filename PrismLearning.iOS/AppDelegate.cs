@@ -17,9 +17,9 @@ namespace PrismLearning.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
-            global::Xamarin.Forms.Forms.SetFlags("Visual_Experimental");
+            global::Xamarin.Forms.Forms.SetFlags("Visual_Experimental", "CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.Forms.FormsMaterial.Init();
 
@@ -28,7 +28,7 @@ namespace PrismLearning.iOS
 
             LoadApplication(new App(new IOSInitializer()));
 
-            return base.FinishedLaunching(app, options);
+            return base.FinishedLaunching(uiApplication, launchOptions);
         }
     }
 }
