@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 using MonkeyCache;
 using Prism.Commands;
 using Prism.Navigation;
@@ -32,12 +34,27 @@ namespace PrismLearning.ViewModels
             ShowLoadingCommand = new DelegateCommand(async () => await ShowLoading());
             GoToPlayersViewCommand = new DelegateCommand(async () => await GoToPlayersView());
             ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
+            CrashCommand = new DelegateCommand(async () => await Crash());
         }
+
+        private async Task Crash()
+        {
+            try
+            {
+                throw new DivideByZeroException();
+            }
+            catch (Exception exception)
+            {
+                await HandleError(exception);
+            }
+        }
+
 
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
         public DelegateCommand ShowLoadingCommand { get; private set; }
         public DelegateCommand ClearCacheCommand { get; private set; }
+        public DelegateCommand CrashCommand { get; private set; }
 
         #region Properties
         public bool IsPanelVisible

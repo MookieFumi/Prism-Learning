@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -24,9 +26,14 @@ namespace PrismLearning.ViewModels.Base
             DialogService = dialogService;
         }
 
-        protected async Task DisplayError(string message)
+        protected async Task HandleError(Exception exception)
         {
-            await DialogService.DisplayAlertAsync("Error", message, "Ok");
+            //if (exception is DivideByZeroException)
+            //{
+            await DialogService.DisplayAlertAsync("Error", exception.Message, "Ok");
+            //}
+
+            Crashes.TrackError(exception);
         }
 
         public void Destroy()

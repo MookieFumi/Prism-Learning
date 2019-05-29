@@ -9,6 +9,8 @@ using PrismLearning.DomainService.Abstractions.DTO;
 using PrismLearning.ViewModels.Base;
 using PrismLearning.Views;
 using PrismLearning.Extensions;
+using Microsoft.AppCenter.Analytics;
+using System.Collections.Generic;
 
 namespace PrismLearning.ViewModels
 {
@@ -35,16 +37,6 @@ namespace PrismLearning.ViewModels
         public DelegateCommand NavigateToDetailCommand { get; private set; }
 
         #region Properties
-
-        private async Task NavigateToDetail()
-        {
-            var parameters = new NavigationParameters
-            {
-                { "player", _selectedPlayer }
-            };
-
-            await NavigationService.NavigateAsync(nameof(PlayerDetailView), TransitionType.Scale, parameters);
-        }
 
         public bool IsLoading
         {
@@ -93,6 +85,21 @@ namespace PrismLearning.ViewModels
         {
             base.OnSleep();
             Players.Clear();
+        }
+
+        private async Task NavigateToDetail()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                { "Player", Newtonsoft.Json.JsonConvert.SerializeObject(_selectedPlayer) }
+            };
+            Analytics.TrackEvent("Navigate To Detail View", properties);
+
+            var parameters = new NavigationParameters
+            {
+                { "player", _selectedPlayer }
+            };
+            await NavigationService.NavigateAsync(nameof(PlayerDetailView), TransitionType.Scale, parameters);
         }
     }
 }

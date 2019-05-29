@@ -1,4 +1,7 @@
-﻿using Prism;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
 using PrismLearning.Controls;
@@ -41,6 +44,9 @@ namespace PrismLearning
         protected override void OnStart()
         {
             // Handle when your app starts
+            AppCenter.Start("ios=0412a5a7-f99a-48d3-b4f8-4e4507097de4;" +
+                  "android=3b554cad-e4b2-4c18-8963-95062767a6b8;",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

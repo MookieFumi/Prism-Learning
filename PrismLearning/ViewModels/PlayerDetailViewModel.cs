@@ -1,4 +1,5 @@
 ﻿using LoginModule.ViewModels.Base;
+using Microsoft.AppCenter.Analytics;
 using Prism.Navigation;
 using Prism.Services;
 using PrismLearning.DomainService.Abstractions.DTO;
