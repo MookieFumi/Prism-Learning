@@ -64,12 +64,7 @@
                     Text="Clear cache"
                     Command="{Binding ClearCacheCommand}" />
             </StackLayout>
-            <controls:Panel
-                MessageText="Ei! What do you want?"
-                AcceptText="Accept"
-                AcceptCommand="{Binding PanelCommand}"
-                CancelText="Cancel"
-                CancelCommand="{Binding PanelCommand}"
+            <controls:TeamPanel
                 IsVisible="{Binding IsPanelVisible}"
                 VerticalOptions="End" />
         </Grid>

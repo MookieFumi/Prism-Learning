@@ -12,13 +12,13 @@ namespace PrismLearning.ViewModels
 {
     public class PlayersViewModel : ViewModelBase
     {
-        private ObservableCollection<PlayerDTO> _players;
-
         private readonly ITeamsService _teamService;
         private readonly IPlayersService _playersService;
-        private bool _isLoading = false;
-        private PlayerDTO _selectedPlayer;
 
+        private bool _isLoading = false;
+        private ObservableCollection<PlayerDTO> _players;
+        private PlayerDTO _selectedPlayer;
+        private ObservableCollection<TeamDTO> _teams;
 
         public PlayersViewModel(INavigationService navigationService, IPageDialogService dialogService, ITeamsService teamService, IPlayersService playersService) : base(navigationService, dialogService)
         {
@@ -30,17 +30,15 @@ namespace PrismLearning.ViewModels
             NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
         }
 
-        private async Task NavigateToDetail()
-        {
-            var navigationParameters = new NavigationParameters
-            {
-                { "player", _selectedPlayer }
-            };
-
-            await NavigationService.NavigateAsync(nameof(PlayerDetailView), navigationParameters);
-        }
-
         public DelegateCommand NavigateToDetailCommand { get; private set; }
+
+        #region Properties
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { SetProperty(ref _isLoading, value); }
+        }
 
         public ObservableCollection<PlayerDTO> Players
         {
@@ -54,11 +52,13 @@ namespace PrismLearning.ViewModels
             set { SetProperty(ref _selectedPlayer, value); }
         }
 
-        public bool IsLoading
+        public ObservableCollection<TeamDTO> Teams
         {
-            get { return _isLoading; }
-            set { SetProperty(ref _isLoading, value); }
+            get { return _teams; }
+            set { SetProperty(ref _teams, value); }
         }
+
+        #endregion
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
@@ -81,6 +81,16 @@ namespace PrismLearning.ViewModels
         {
             base.OnSleep();
             Players.Clear();
+        }
+
+        private async Task NavigateToDetail()
+        {
+            var navigationParameters = new NavigationParameters
+            {
+                { "player", _selectedPlayer }
+            };
+
+            await NavigationService.NavigateAsync(nameof(PlayerDetailView), navigationParameters);
         }
     }
 }

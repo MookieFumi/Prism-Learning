@@ -1,8 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using MonkeyCache;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using PrismLearning.DomainService.Abstractions;
+using PrismLearning.DomainService.Abstractions.DTO;
 using PrismLearning.ViewModels.Base;
 using PrismLearning.Views;
 
@@ -10,16 +13,20 @@ namespace PrismLearning.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IBarrel _barrel;
+        private readonly ITeamsService _teamService;
+
         private bool _isPanelVisible = false;
         private bool _isFullscreenLoading = false;
         private string _searchText;
-        private readonly IBarrel _barrel;
+        private ObservableCollection<TeamDTO> _teams;
 
-        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IBarrel barrel) : base(navigationService, dialogService)
+        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IBarrel barrel, ITeamsService teamService) : base(navigationService, dialogService)
         {
             Title = "Main view";
 
             _barrel = barrel;
+            _teamService = teamService;
 
             PanelCommand = new DelegateCommand(() => IsPanelVisible = !IsPanelVisible);
             ShowLoadingCommand = new DelegateCommand(async () => await ShowLoading());
@@ -27,6 +34,12 @@ namespace PrismLearning.ViewModels
             ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
         }
 
+        public DelegateCommand PanelCommand { get; private set; }
+        public DelegateCommand GoToPlayersViewCommand { get; private set; }
+        public DelegateCommand ShowLoadingCommand { get; private set; }
+        public DelegateCommand ClearCacheCommand { get; private set; }
+
+        #region Properties
         public bool IsPanelVisible
         {
             get { return _isPanelVisible; }
@@ -45,10 +58,29 @@ namespace PrismLearning.ViewModels
             set { SetProperty(ref _searchText, value); }
         }
 
-        public DelegateCommand PanelCommand { get; private set; }
-        public DelegateCommand GoToPlayersViewCommand { get; private set; }
-        public DelegateCommand ShowLoadingCommand { get; private set; }
-        public DelegateCommand ClearCacheCommand { get; private set; }
+        public ObservableCollection<TeamDTO> Teams
+        {
+            get { return _teams; }
+            set { SetProperty(ref _teams, value); }
+        }
+        #endregion
+
+        public override async void OnNavigatingTo(INavigationParameters parameters)
+        {
+            base.OnNavigatingTo(parameters);
+            await ShowLoading();
+            Teams = new ObservableCollection<TeamDTO>(await _teamService.GetTeams());
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+        }
+
+        public override void OnSleep()
+        {
+            base.OnSleep();
+        }
 
         private async Task GoToPlayersView()
         {
@@ -60,22 +92,6 @@ namespace PrismLearning.ViewModels
             IsFullscreenLoading = true;
             await Task.Delay(2000);
             IsFullscreenLoading = false;
-        }
-
-        public override async void OnNavigatingTo(INavigationParameters parameters)
-        {
-            base.OnNavigatingTo(parameters);
-            await ShowLoading();
-        }
-
-        public override void OnResume()
-        {
-            base.OnResume();
-        }
-
-        public override void OnSleep()
-        {
-            base.OnSleep();
         }
     }
 }
