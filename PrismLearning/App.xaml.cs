@@ -1,9 +1,8 @@
-﻿using LoginModule.Views;
-using Prism;
+﻿using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
+using PrismLearning.Controls;
 using PrismLearning.Extensions;
-using Xamarin.Forms;
 
 namespace PrismLearning
 {
@@ -17,12 +16,13 @@ namespace PrismLearning
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"{nameof(LoginView)}");
+            //await NavigationService.NavigateAsync($"{nameof(LoginView)}");
+            await NavigationService.NavigateAsync($"/{nameof(TransitionNavigationPage)}/MainView");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<TransitionNavigationPage>();
 
             containerRegistry.AddViews();
             containerRegistry.AddServices();

@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using PrismLearning.Controls;
 using PrismLearning.DomainService.Abstractions;
 using PrismLearning.DomainService.Abstractions.DTO;
 using PrismLearning.ViewModels.Base;
 using PrismLearning.Views;
+using PrismLearning.Extensions;
 
 namespace PrismLearning.ViewModels
 {
@@ -33,6 +35,16 @@ namespace PrismLearning.ViewModels
         public DelegateCommand NavigateToDetailCommand { get; private set; }
 
         #region Properties
+
+        private async Task NavigateToDetail()
+        {
+            var parameters = new NavigationParameters
+            {
+                { "player", _selectedPlayer }
+            };
+
+            await NavigationService.NavigateAsync(nameof(PlayerDetailView), TransitionType.Scale, parameters);
+        }
 
         public bool IsLoading
         {
@@ -81,16 +93,6 @@ namespace PrismLearning.ViewModels
         {
             base.OnSleep();
             Players.Clear();
-        }
-
-        private async Task NavigateToDetail()
-        {
-            var navigationParameters = new NavigationParameters
-            {
-                { "player", _selectedPlayer }
-            };
-
-            await NavigationService.NavigateAsync(nameof(PlayerDetailView), navigationParameters);
         }
     }
 }
