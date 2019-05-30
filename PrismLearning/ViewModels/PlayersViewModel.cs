@@ -11,30 +11,32 @@ using PrismLearning.Views;
 using PrismLearning.Extensions;
 using Microsoft.AppCenter.Analytics;
 using System.Collections.Generic;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PrismLearning.ViewModels
 {
     public class PlayersViewModel : ViewModelBase
     {
-        private readonly ITeamsService _teamService;
         private readonly IPlayersService _playersService;
 
         private bool _isLoading = false;
         private ObservableCollection<PlayerDTO> _players;
         private PlayerDTO _selectedPlayer;
-        private ObservableCollection<TeamDTO> _teams;
 
-        public PlayersViewModel(INavigationService navigationService, IPageDialogService dialogService, ITeamsService teamService, IPlayersService playersService) : base(navigationService, dialogService)
+        public PlayersViewModel(INavigationService navigationService, IPageDialogService dialogService, IPlayersService playersService) : base(navigationService, dialogService)
         {
-            _teamService = teamService;
             _playersService = playersService;
 
             Title = "Players";
 
-            NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
-        }
+            NavigateToDetailCommand = new Command(async () =>
+            {
+                await NavigateToDetail();
+            });
 
-        public DelegateCommand NavigateToDetailCommand { get; private set; }
+        }
+        public ICommand NavigateToDetailCommand { get; private set; }
 
         #region Properties
 
@@ -54,12 +56,6 @@ namespace PrismLearning.ViewModels
         {
             get { return _selectedPlayer; }
             set { SetProperty(ref _selectedPlayer, value); }
-        }
-
-        public ObservableCollection<TeamDTO> Teams
-        {
-            get { return _teams; }
-            set { SetProperty(ref _teams, value); }
         }
 
         #endregion
