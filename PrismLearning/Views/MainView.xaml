@@ -9,72 +9,74 @@
     x:Class="PrismLearning.Views.MainView"
     Title="{Binding Title}">
     <ContentPage.Content>
-        <Grid
-            ll:LoadingLayout.IsLoading="{Binding IsFullscreenLoading}">
-            <ll:LoadingLayout.LoadingTemplate>
-                <DataTemplate>
-                    <Grid
-                        BackgroundColor="White">
-                        <StackLayout
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center">
-                            <ActivityIndicator
-                                Color="#1abc9c"
-                                IsRunning="{Binding IsFullscreenLoading}" />
-                            <Label
-                                Text="Loading..."
-                                HorizontalOptions="Center" />
-                        </StackLayout>
-                    </Grid>
-                </DataTemplate>
-            </ll:LoadingLayout.LoadingTemplate>
-            <StackLayout
-                VerticalOptions="Start"
-                Padding="20">
-                <Button
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc"
-                    TextColor="White"
-                    Margin="0,0,0,16"
-                    Text="Go To PlayersView"
-                    Command="{Binding GoToPlayersViewCommand}" />
-                <Button
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc"
-                    TextColor="White"
-                    Margin="0,0,0,16"
-                    Text="Show panel"
-                    Command="{Binding PanelCommand}" />
-                <Button
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc"
-                    TextColor="White"
-                    Margin="0,0,0,16"
-                    Text="Show Loading"
-                    Command="{Binding ShowLoadingCommand}" />
-                <Button
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc"
-                    TextColor="White"
-                    Margin="0,0,0,16"
-                    Text="Clear cache"
-                    Command="{Binding ClearCacheCommand}" />
-                <Button
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    BackgroundColor="#1a81bc"
-                    TextColor="White"
-                    Margin="0,0,0,16"
-                    Text="Crash"
-                    Command="{Binding CrashCommand}" />
-            </StackLayout>
-            <controls:TeamPanel
-                IsVisible="{Binding IsPanelVisible}"
-                VerticalOptions="End" />
-        </Grid>
+        <ScrollView>
+            <Grid
+                ll:LoadingLayout.IsLoading="{Binding IsFullscreenLoading}">
+                <ll:LoadingLayout.LoadingTemplate>
+                    <DataTemplate>
+                        <Grid
+                            BackgroundColor="White">
+                            <StackLayout
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                                <ActivityIndicator
+                                    Color="#1abc9c"
+                                    IsRunning="{Binding IsFullscreenLoading}" />
+                                <Label
+                                    Text="Loading..."
+                                    HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </ll:LoadingLayout.LoadingTemplate>
+                <StackLayout
+                    VerticalOptions="Start"
+                    Padding="20">
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="Go To PlayersView"
+                        Command="{Binding GoToPlayersViewCommand}" />
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="Show panel"
+                        Command="{Binding PanelCommand}" />
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="Show Loading"
+                        Command="{Binding ShowLoadingCommand}" />
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="Clear cache"
+                        Command="{Binding ClearCacheCommand}" />
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="Crash"
+                        Command="{Binding CrashCommand}" />
+                </StackLayout>
+                <controls:TeamPanel
+                    IsVisible="{Binding IsPanelVisible}"
+                    VerticalOptions="End" />
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

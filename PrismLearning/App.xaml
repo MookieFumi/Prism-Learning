@@ -6,10 +6,35 @@
     x:Class="PrismLearning.App">
     <Application.Resources>
         <ResourceDictionary>
-            <OnPlatform x:TypeArguments="x:String" x:Key="Poppins">
-                <On Platform="Android" Value="Poppins-Regular.ttf#Poppins" />
-                <On Platform="iOS" Value="Poppins-Regular" />
+            <OnPlatform
+                x:TypeArguments="x:String"
+                x:Key="Poppins">
+                <On
+                    Platform="Android"
+                    Value="Poppins-Regular.ttf#Poppins" />
+                <On
+                    Platform="iOS"
+                    Value="Poppins-Regular" />
             </OnPlatform>
         </ResourceDictionary>
+        <Style
+            TargetType="Grid">
+            <Setter
+                Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup
+                        x:Name="CommonStates">
+                        <VisualState
+                            x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter
+                                    Property="BackgroundColor"
+                                    Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
     </Application.Resources>
 </prism:PrismApplication>

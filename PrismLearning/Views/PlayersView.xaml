@@ -17,23 +17,22 @@
             <ll:LoadingLayout.LoadingTemplate>
                 <DataTemplate>
                     <Grid
-                        HeightRequest="170"
                         Padding="20">
                         <Grid.RowDefinitions>
                             <RowDefinition
-                                Height="24" />
+                                Height="Auto" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                             <RowDefinition
-                                Height="20" />
+                                Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition

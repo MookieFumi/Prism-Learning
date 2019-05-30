@@ -4,31 +4,43 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="PrismLearning.Controls.TeamPanel">
     <ContentView.Content>
-        <StackLayout>
-            <Label
-                Text="Select your Team"
-                HorizontalTextAlignment="Center" />
-            <CollectionView
-                HeightRequest="80"
-                ItemsSource="{Binding Teams}"
-                ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
-                SelectionMode="Single"
-                SelectedItem="{Binding SelectedTeam , Mode=TwoWay}"
-                SelectionChangedCommand="{Binding NavigateToDetailCommand}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition
-                                    Height="60" />
-                            </Grid.RowDefinitions>
-                            <Image
-                                Source="{Binding Image}"
-                                Aspect="AspectFit" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        <AbsoluteLayout>
+            <StackLayout>
+                <Label
+                    Text="Select your Team"
+                    HorizontalTextAlignment="Center" />
+                <CollectionView
+                    ItemsSource="{Binding Teams}"
+                    HeightRequest="80"
+                    VerticalOptions="Start"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedTeam , Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding NavigateToDetailCommand}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Padding="5"
+                                HeightRequest="60"
+                                WidthRequest="60">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="*" />
+                                    <RowDefinition
+                                        Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Source="{Binding Image}"
+                                    Aspect="AspectFill" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>
