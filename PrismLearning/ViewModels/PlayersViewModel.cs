@@ -63,9 +63,17 @@ namespace PrismLearning.ViewModels
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
             IsLoading = true;
-            //await Task.Delay(2000);
-            Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
+            if (parameters.Count > 0)
+            {
+                var team = parameters.GetValue<TeamDTO>("team");
+                Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers(team.Acronym));
+            }
+            else
+            {
+                Players = new ObservableCollection<PlayerDTO>(await _playersService.GetPlayers());
+            }
             IsLoading = false;
+
             base.OnNavigatingTo(parameters);
         }
 

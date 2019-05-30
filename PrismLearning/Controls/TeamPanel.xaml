@@ -12,7 +12,9 @@
                 HeightRequest="80"
                 ItemsSource="{Binding Teams}"
                 ItemsLayout="{x:Static ListItemsLayout.HorizontalList}"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedTeam , Mode=TwoWay}"
+                SelectionChangedCommand="{Binding NavigateToDetailCommand}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>

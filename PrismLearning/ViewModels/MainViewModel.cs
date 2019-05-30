@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MonkeyCache;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using PrismLearning.Controls;
 using PrismLearning.DomainService.Abstractions;
 using PrismLearning.DomainService.Abstractions.DTO;
+using PrismLearning.Extensions;
 using PrismLearning.ViewModels.Base;
 using PrismLearning.Views;
 
@@ -22,6 +26,7 @@ namespace PrismLearning.ViewModels
         private bool _isFullscreenLoading = false;
         private string _searchText;
         private ObservableCollection<TeamDTO> _teams;
+        private TeamDTO _selectedTeam;
 
         public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IBarrel barrel, ITeamsService teamService) : base(navigationService, dialogService)
         {
@@ -35,6 +40,7 @@ namespace PrismLearning.ViewModels
             GoToPlayersViewCommand = new DelegateCommand(async () => await GoToPlayersView());
             ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
             CrashCommand = new DelegateCommand(async () => await Crash());
+            NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
         }
 
         private async Task Crash()
@@ -49,12 +55,12 @@ namespace PrismLearning.ViewModels
             }
         }
 
-
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
         public DelegateCommand ShowLoadingCommand { get; private set; }
         public DelegateCommand ClearCacheCommand { get; private set; }
         public DelegateCommand CrashCommand { get; private set; }
+        public DelegateCommand NavigateToDetailCommand { get; private set; }
 
         #region Properties
         public bool IsPanelVisible
@@ -80,7 +86,29 @@ namespace PrismLearning.ViewModels
             get { return _teams; }
             set { SetProperty(ref _teams, value); }
         }
+
+        public TeamDTO SelectedTeam
+        {
+            get { return _selectedTeam; }
+            set { SetProperty(ref _selectedTeam, value); }
+        }
         #endregion
+
+        private async Task NavigateToDetail()
+        {
+            IsPanelVisible = false;
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                { "Team", Newtonsoft.Json.JsonConvert.SerializeObject(_selectedTeam) }
+            };
+            Analytics.TrackEvent("Navigate To Detail View", properties);
+
+            var parameters = new NavigationParameters
+            {
+                { "team", _selectedTeam }
+            };
+            await NavigationService.NavigateAsync(nameof(PlayersView), TransitionType.Scale, parameters);
+        }
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {

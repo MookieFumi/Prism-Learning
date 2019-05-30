@@ -137,7 +137,7 @@
                 </DataTemplate>
             </ll:LoadingLayout.LoadingTemplate>
             <CollectionView
-                Grid.Row="1"
+                VerticalOptions="FillAndExpand"
                 ItemsSource="{Binding Players}"
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedPlayer , Mode=TwoWay}"
@@ -145,7 +145,6 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            HeightRequest="170"
                             Padding="20">
                             <Grid.RowDefinitions>
                                 <RowDefinition
