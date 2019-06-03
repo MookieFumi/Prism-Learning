@@ -231,7 +231,7 @@ We have followed the next steps:
 * Add **google-service.json** file in the Android project and remember to set the **Build Action** to **GoogleServicesJson**.
 * Add **Microsoft.AppCenter.Push** nuget package.
 * Add **Internet** permission in the Android manifest file.
-* Add Firebase default channel and two receivers in the Android manifest file (inside application section).
+* Add Firebase **default channel** and two receivers in the Android manifest file (inside application section).
 ```xml
 <meta-data
     android:name="com.google.firebase.messaging.default_notification_channel_id"
@@ -268,10 +268,14 @@ public class MyFirebaseMessagingService : FirebaseMessagingService
     }
 }
 ```
+* Start the Push notification service in our core project.
+```csharp
+AppCenter.Start("ios=xxxxx;android=xxxxx;", typeof(Push));
+```
 * We can try the push notifications through the AppCenter UI and we can choose:
 
   * **Campaign name** that is used to track campaign results. It's required.
   * Push notification **title**. It's optional.
   * **Message** or body. It's required.
   * **Custom data**. A key value dictionary to add some extra informtion. It's optionala.
-  * The target of the push notifications: All registered devices, audience (*there is a limit of 1000 devices*), device list,user list.
+  * The **target** of the push notification: All registered devices, audience (*there is a limit of 1000 devices*), device list,user list.
