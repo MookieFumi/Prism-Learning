@@ -279,3 +279,89 @@ AppCenter.Start("ios=xxxxx;android=xxxxx;", typeof(Push));
   * **Message** or body. It's required.
   * **Custom data**. A key value dictionary to add some extra informtion. It's optionala.
   * The **target** of the push notification: All registered devices, audience (*there is a limit of 1000 devices*), device list,user list.
+
+##### iOS
+
+We have followed the next steps:
+
+* Configure the app in [Apple Developer Portal](https://developer.apple.com) to enable the push notifications.
+* Enable Push Notification in Entitlements.plist file.
+* Enable Background Modes - Remote Notifications in Info.plist file.
+* Overrides the methods RegisteredForRemoteNotifications, FailedToRegisterForRemoteNotifications and DidReceiveRemoteNotification in our AppDelegate file.
+
+```csharp
+public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+{
+    Push.RegisteredForRemoteNotifications(deviceToken);
+}
+
+public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+{
+    Push.FailedToRegisterForRemoteNotifications(error);
+}
+
+public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, System.Action<UIBackgroundFetchResult> completionHandler)
+{
+    var result = Push.DidReceiveRemoteNotification(userInfo);
+    if (result)
+    {
+        completionHandler?.Invoke(UIBackgroundFetchResult.NewData);
+    }
+    else
+    {
+        completionHandler?.Invoke(UIBackgroundFetchResult.NoData);
+    }
+}
+```
+* Create our custom UNUserNotificationCenterDelegate.
+```csharp
+public class YourOwnUNUserNotificationCenterDelegate : UNUserNotificationCenterDelegate
+{
+    public bool didReceiveNotificationInForeground { get; set; }
+
+    public override void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
+    {
+        this.didReceiveNotificationInForeground = true;
+
+        Push.DidReceiveRemoteNotification(notification.Request.Content.UserInfo);
+
+        completionHandler(UNNotificationPresentationOptions.Alert);
+    }
+
+    public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+    {
+        if (response.IsDefaultAction)
+        {
+            // User tapped on notification
+        }
+
+        Push.DidReceiveRemoteNotification(response.Notification.Request.Content.UserInfo);
+
+        completionHandler();
+    }
+}
+```
+* Set our custom UNUserNotificationCenterDelegate.
+```csharp
+///FinishedLaunching
+if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+{
+    this.myOwnNotificationDelegate = new YourOwnUNUserNotificationCenterDelegate();
+    UNUserNotificationCenter.Current.Delegate = this.myOwnNotificationDelegate;
+}
+
+Push.PushNotificationReceived += (sender, e) =>
+{
+    if (this.myOwnNotificationDelegate.didReceiveNotificationInForeground)
+    {
+        // Handle the push notification that was received while in foreground.
+    }
+    else
+    {
+        // Handle the push notification that was received while in background.
+    }
+
+    // Reset the property for next notifications.
+    this.myOwnNotificationDelegate.didReceiveNotificationInForeground = false;
+};
+```

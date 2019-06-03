@@ -38,11 +38,13 @@
 	<array>
 		<string>Poppins-Regular.ttf</string>
 	</array>
+	<key>AppCenterAppDelegateForwarderEnabled</key>
+	<string>0</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
-	<key>AppCenterAppDelegateForwarderEnabled</key>
+	<key>AppCenterUserNotificationCenterDelegateForwarderEnabled</key>
 	<string>0</string>
 </dict>
 </plist>

@@ -2,6 +2,7 @@
 using Foundation;
 using Microsoft.AppCenter.Push;
 using UIKit;
+using UserNotifications;
 
 namespace PrismLearning.iOS
 {
@@ -11,6 +12,8 @@ namespace PrismLearning.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        private YourOwnUNUserNotificationCenterDelegate myOwnNotificationDelegate = null;
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -27,6 +30,27 @@ namespace PrismLearning.iOS
             CachedImageRenderer.InitImageSourceHandler();
 
             LoadApplication(new App(new IOSInitializer()));
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                this.myOwnNotificationDelegate = new YourOwnUNUserNotificationCenterDelegate();
+                UNUserNotificationCenter.Current.Delegate = this.myOwnNotificationDelegate;
+            }
+
+            Push.PushNotificationReceived += (sender, e) =>
+            {
+                if (this.myOwnNotificationDelegate.didReceiveNotificationInForeground)
+                {
+                    // Handle the push notification that was received while in foreground.
+                }
+                else
+                {
+                    // Handle the push notification that was received while in background.
+                }
+
+                // Reset the property for next notifications.
+                this.myOwnNotificationDelegate.didReceiveNotificationInForeground = false;
+            };
 
             return base.FinishedLaunching(uiApplication, launchOptions);
         }

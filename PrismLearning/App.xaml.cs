@@ -71,13 +71,11 @@ namespace PrismLearning
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
             base.OnSleep();
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
             base.OnResume();
         }
         #endregion
