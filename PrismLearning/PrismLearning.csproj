@@ -22,6 +22,7 @@
     <PackageReference Include="LiveXAML" Version="2.1.72" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

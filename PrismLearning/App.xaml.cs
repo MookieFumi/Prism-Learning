@@ -1,6 +1,8 @@
-﻿using Microsoft.AppCenter;
+﻿using System.Collections.Generic;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -43,10 +45,28 @@ namespace PrismLearning
         #region App Events
         protected override void OnStart()
         {
-            // Handle when your app starts
+            Push.PushNotificationReceived += (sender, e) =>
+            {
+                var summary = $"Push notification received:" +
+                                    $"\n\tNotification title: {e.Title}" +
+                                    $"\n\tMessage: {e.Message}";
+
+                if (e.CustomData != null)
+                {
+                    summary += "\n\tCustom data:\n";
+                    foreach (var key in e.CustomData.Keys)
+                    {
+                        summary += $"\t\t{key} : {e.CustomData[key]}\n";
+                    }
+                }
+
+                System.Diagnostics.Debug.WriteLine(summary);
+                Analytics.TrackEvent("Push Notification Received", new Dictionary<string, string>() { { "summary", summary } });
+            };
+
             AppCenter.Start("ios=0412a5a7-f99a-48d3-b4f8-4e4507097de4;" +
-                  "android=3b554cad-e4b2-4c18-8963-95062767a6b8;",
-                  typeof(Analytics), typeof(Crashes));
+                      "android=3b554cad-e4b2-4c18-8963-95062767a6b8;",
+                      typeof(Analytics), typeof(Crashes), typeof(Push));
         }
 
         protected override void OnSleep()

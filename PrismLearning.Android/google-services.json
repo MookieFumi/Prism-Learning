@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "254803074359",
+    "firebase_url": "https://prismlearning-d813a.firebaseio.com",
+    "project_id": "prismlearning-d813a",
+    "storage_bucket": "prismlearning-d813a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254803074359:android:1401f3e1590207f8",
+        "android_client_info": {
+          "package_name": "com.mookiefumi.prismlearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254803074359-ci60j9tvke5nn1nudpdknoe9vkqnf35m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJUE2wlXpVt-ClbtiA75ZJRqNgtPAnt4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254803074359-ci60j9tvke5nn1nudpdknoe9vkqnf35m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

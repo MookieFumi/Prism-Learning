@@ -215,3 +215,63 @@ public class PlayersService : IPlayersService
     }
 }
 ```
+
+
+### AppCenter
+
+AppCenter portal offers us a complete solution to handle **Build**, **Test**, **Distribute**, **Diagnostics**, **Analytics** and **Push notifications**. Also they have added recently two new features: **Auth** (nowadays it's only supported AAD - Azure Active Directory) and **Storage**.
+
+#### Push notifications
+
+##### Android
+
+We have followed the next steps:
+
+* Create a new project and app on [Firebase Console](https://console.firebase.google.com).
+* Add **google-service.json** file in the Android project and remember to set the **Build Action** to **GoogleServicesJson**.
+* Add **Microsoft.AppCenter.Push** nuget package.
+* Add **Internet** permission in the Android manifest file.
+* Add Firebase default channel and two receivers in the Android manifest file (inside application section).
+```xml
+<meta-data
+    android:name="com.google.firebase.messaging.default_notification_channel_id"
+    android:value="@string/notification_channel_id" />
+<receiver
+    android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+    android:exported="false" />
+<receiver
+    android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND">
+    <intent-filter>
+        <action
+            android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action
+            android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category
+            android:name="${applicationId}" />
+    </intent-filter>
+</receiver>
+```
+* By default only works when the app is in background so if we try it with the application in foreground we don't see any push notification. If we want to show push notification when the app is in foreground we should create a new service wich should inherit **FirebaseMessagingService**.
+```csharp
+[Service]
+[IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+public class MyFirebaseMessagingService : FirebaseMessagingService
+{
+    public override void OnMessageReceived(RemoteMessage message)
+    {
+        if (message.GetNotification() != null)
+        {
+            SendNotification(message);
+        }
+    }
+}
+```
+* We can try the push notifications through the AppCenter UI and we can choose:
+
+  * **Campaign name** that is used to track campaign results. It's required.
+  * Push notification **title**. It's optional.
+  * **Message** or body. It's required.
+  * **Custom data**. A key value dictionary to add some extra informtion. It's optionala.
+  * The target of the push notifications: All registered devices, audience (*there is a limit of 1000 devices*), device list,user list.
