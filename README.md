@@ -277,7 +277,7 @@ AppCenter.Start("ios=xxxxx;android=xxxxx;", typeof(Push));
   * **Campaign name** that is used to track campaign results. It's required.
   * Push notification **title**. It's optional.
   * **Message** or body. It's required.
-  * **Custom data**. A key value dictionary to add some extra informtion. It's optionala.
+  * **Custom data**. A key value dictionary to add some extra informtion. It's optional.
   * The **target** of the push notification: All registered devices, audience (*there is a limit of 1000 devices*), device list,user list.
 
 ##### iOS

@@ -14,13 +14,11 @@ namespace PrismLearning.Droid
         {
             if (message.GetNotification() != null)
             {
-                //These is how most messages will be received
-                SendNotification(message);
+                ShowNotification(message);
             }
         }
 
-
-        private void SendNotification(RemoteMessage message)
+        private void ShowNotification(RemoteMessage message)
         {
             var notificationManager = (NotificationManager)GetSystemService(NotificationService);
 
@@ -47,7 +45,6 @@ namespace PrismLearning.Droid
                 .SetAutoCancel(false);
 
             var pushNotification = builder.Build();
-            //pushNotification.Flags = NotificationFlags.AutoCancel;
 
             notificationManager.Notify(id, pushNotification);
         }

@@ -23,6 +23,8 @@ namespace PrismLearning
 
             //await NavigationService.NavigateAsync($"{nameof(LoginView)}");
             await NavigationService.NavigateAsync($"/{nameof(TransitionNavigationPage)}/MainView");
+
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -61,7 +63,7 @@ namespace PrismLearning
                 }
 
                 System.Diagnostics.Debug.WriteLine(summary);
-                Analytics.TrackEvent("Push Notification Received", new Dictionary<string, string>() { { "summary", summary } });
+                //Analytics.TrackEvent("Push Notification Received", new Dictionary<string, string>() { { "summary", summary } });
             };
 
             AppCenter.Start("ios=0412a5a7-f99a-48d3-b4f8-4e4507097de4;" +

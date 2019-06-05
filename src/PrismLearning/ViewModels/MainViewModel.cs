@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using MonkeyCache;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 using Prism.Services;
 using PrismLearning.Controls;
@@ -19,6 +19,7 @@ namespace PrismLearning.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private readonly IEventAggregator _eventAggregator;
         private readonly IBarrel _barrel;
         private readonly ITeamsService _teamService;
 
@@ -28,12 +29,13 @@ namespace PrismLearning.ViewModels
         private ObservableCollection<TeamDTO> _teams;
         private TeamDTO _selectedTeam;
 
-        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IBarrel barrel, ITeamsService teamService) : base(navigationService, dialogService)
+        public MainViewModel(INavigationService navigationService, IPageDialogService dialogService, IEventAggregator eventAggregator, IBarrel barrel, ITeamsService teamService) : base(navigationService, dialogService)
         {
             Title = "Main view";
 
             _barrel = barrel;
             _teamService = teamService;
+            _eventAggregator = eventAggregator;
 
             PanelCommand = new DelegateCommand(() => IsPanelVisible = !IsPanelVisible);
             ShowLoadingCommand = new DelegateCommand(async () => await ShowLoading());
@@ -41,6 +43,11 @@ namespace PrismLearning.ViewModels
             ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
             CrashCommand = new DelegateCommand(async () => await Crash());
             NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
+
+            _eventAggregator.GetEvent<MyEvent>()?.Subscribe(async () =>
+            {
+                await DialogService.DisplayAlertAsync("Notification", "Show notification", "Ok");
+            });
         }
 
         private async Task Crash()
@@ -93,6 +100,12 @@ namespace PrismLearning.ViewModels
             set { SetProperty(ref _selectedTeam, value); }
         }
         #endregion
+
+        public override void Destroy()
+        {
+            _eventAggregator.GetEvent<MyEvent>()?.Unsubscribe(() => { });
+            base.Destroy();
+        }
 
         private async Task NavigateToDetail()
         {
