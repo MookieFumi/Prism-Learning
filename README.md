@@ -221,6 +221,35 @@ public class PlayersService : IPlayersService
 
 AppCenter portal offers us a complete solution to handle **Build**, **Test**, **Distribute**, **Diagnostics**, **Analytics** and **Push notifications**. Also they have added recently two new features: **Auth** (nowadays it's only supported AAD - Azure Active Directory) and **Storage**.
 
+#### First Steps
+
+1. Add NuGet packages to your solution
+Search for “App Center”, and look for the following packages in the results:
+
+* If you are on Mac, select App Center Analytics, App Center Crashes, App Center Push and add both packages.
+* If you are on Windows, install Microsoft.AppCenter.Analytics and Microsoft.AppCenter.Crashes packages.
+
+If you use the App Center SDK in a portable project, you need to install the packages in both the portable and the iOS projects.
+
+2. Start the SDK
+
+Open your shared or portable project. Either open App.xaml.cs or your class that inherits Xamarin.Forms.Application and add the following using statements:
+
+```csharp
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
+```
+In the same file, add the following in the OnStart() method:
+```csharp
+AppCenter.Start("ios=a8a9fa87-e086-46fb-846c-e7503a3a468f;" +
+                  "uwp={Your UWP App secret here};" +
+                  "android={Your Android App secret here}",
+                  typeof(Analytics), typeof(Crashes), typeof(Push));
+```
+
+
 #### Push notifications
 
 ##### Android
