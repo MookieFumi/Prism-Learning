@@ -55,6 +55,8 @@
 			</array>
 			<key>CFBundleURLTypes</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.mookiefumi.prismlearning</string>
 		</dict>
 	</array>
 </dict>
