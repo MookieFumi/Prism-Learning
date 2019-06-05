@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Auth;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -68,7 +68,7 @@ namespace PrismLearning
 
             AppCenter.Start("ios=0412a5a7-f99a-48d3-b4f8-4e4507097de4;" +
                       "android=3b554cad-e4b2-4c18-8963-95062767a6b8;",
-                      typeof(Analytics), typeof(Crashes), typeof(Push));
+                      typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Auth));
         }
 
         protected override void OnSleep()

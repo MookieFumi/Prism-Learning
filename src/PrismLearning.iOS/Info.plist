@@ -46,5 +46,16 @@
 	</array>
 	<key>AppCenterUserNotificationCenterDelegateForwarderEnabled</key>
 	<string>0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msal0412a5a7-f99a-48d3-b4f8-4e4507097de4</string>
+			</array>
+			<key>CFBundleURLTypes</key>
+			<string>Editor</string>
+		</dict>
+	</array>
 </dict>
 </plist>

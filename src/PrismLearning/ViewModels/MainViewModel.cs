@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Auth;
 using MonkeyCache;
 using Prism.Commands;
 using Prism.Events;
@@ -43,11 +45,25 @@ namespace PrismLearning.ViewModels
             ClearCacheCommand = new DelegateCommand(() => _barrel.EmptyAll());
             CrashCommand = new DelegateCommand(async () => await Crash());
             NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
+            SignInCommand = new DelegateCommand(async () => await SignIn());
 
             _eventAggregator.GetEvent<MyEvent>()?.Subscribe(async () =>
             {
                 await DialogService.DisplayAlertAsync("Notification", "Show notification", "Ok");
             });
+        }
+
+        private async Task SignIn()
+        {
+            try
+            {
+                // Sign-in succeeded.
+                UserInformation userInfo = await Auth.SignInAsync();
+            }
+            catch (Exception exception)
+            {
+                await HandleError(exception);
+            }
         }
 
         private async Task Crash()
@@ -68,7 +84,7 @@ namespace PrismLearning.ViewModels
         public DelegateCommand ClearCacheCommand { get; private set; }
         public DelegateCommand CrashCommand { get; private set; }
         public DelegateCommand NavigateToDetailCommand { get; private set; }
-
+        public DelegateCommand SignInCommand { get; private set; }
         #region Properties
         public bool IsPanelVisible
         {
