@@ -224,31 +224,86 @@ AppCenter portal offers us a complete solution to handle **Build**, **Test**, **
 #### First Steps
 
 1. Add NuGet packages to your solution
-Search for “App Center”, and look for the following packages in the results:
 
-* If you are on Mac, select App Center Analytics, App Center Crashes, App Center Push and add both packages.
-* If you are on Windows, install Microsoft.AppCenter.Analytics and Microsoft.AppCenter.Crashes packages.
+    Search for “App Center”, and look for the following packages in the results:
 
-If you use the App Center SDK in a portable project, you need to install the packages in both the portable and the iOS projects.
+    * If you are on Mac, select App Center Analytics, App Center Crashes, App Center Push and add both packages.
+    * If you are on Windows, install Microsoft.AppCenter.Analytics and Microsoft.AppCenter.Crashes packages.
+
+    If you use the App Center SDK in a portable project, you need to install the packages in both the portable and the iOS projects.
 
 2. Start the SDK
 
-Open your shared or portable project. Either open App.xaml.cs or your class that inherits Xamarin.Forms.Application and add the following using statements:
+    Open your shared or portable project. Either open App.xaml.cs or your class that inherits Xamarin.Forms.Application and add the following using statements:
+
+    ```csharp
+    using Microsoft.AppCenter;
+    using Microsoft.AppCenter.Analytics;
+    using Microsoft.AppCenter.Crashes;
+    using Microsoft.AppCenter.Push;
+    ```
+
+    In the same file, add the following in the OnStart() method:
+
+    ```csharp
+    AppCenter.Start("ios=a8a9fa87-e086-46fb-846c-e7503a3a468f;" +
+                    "uwp={Your UWP App secret here};" +
+                    "android={Your Android App secret here}",
+                    typeof(Analytics), typeof(Crashes), typeof(Push));
+    ```
+#### Diagnostics
+
+App Center Diagnostics is a cloud service that helps developers monitor the health of an application, delivering the data needed to understand what happens when an app fails during testing or in the wild. The App Center Diagnostics SDK collects information about crashes and errors in your apps and uploads them to the App Center portal for analysis by the development team - eliminating the guesswork about what really happened in the app when it failed.
+
+##### Generate a test crash
+
+Generate a test crash using the function generateTestCrash:
 
 ```csharp
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Push;
-```
-In the same file, add the following in the OnStart() method:
-```csharp
-AppCenter.Start("ios=a8a9fa87-e086-46fb-846c-e7503a3a468f;" +
-                  "uwp={Your UWP App secret here};" +
-                  "android={Your Android App secret here}",
-                  typeof(Analytics), typeof(Crashes), typeof(Push));
+Crashes.GenerateTestCrash();
 ```
 
+##### Send your first error
+
+Send an error to be tracked as a handled exception using the function TrackError:
+
+```csharp
+try {
+  // your code here.
+} catch (Exception exception) {
+  Crashes.TrackError(exception);
+}
+```
+
+To provide more context, so that you can solve the issue earlier, you can pass optional properties as a dictionary of strings:
+
+```csharp
+try {
+  // your code here.
+} catch (Exception exception) {
+  var properties = new Dictionary<string, string> {
+    { "Category", "Music" },
+    { "Wifi", "On" }
+  };
+  Crashes.TrackError(exception, properties);
+}
+```
+
+#### Analytics
+
+App Center Analytics helps you understand user behavior and customer engagement to improve your app. The SDK automatically captures session count and device properties like model, OS version, etc. You can define your own custom events to measure things that matter to you. All the information captured is available in the App Center portal for you to analyze the data.
+
+##### Events
+
+To create a new a event is so simple, just copy the code behind on your method.
+
+```csharp
+Dictionary<string, string> properties = new Dictionary<string, string>
+{
+    { "Player", Newtonsoft.Json.JsonConvert.SerializeObject(_selectedPlayer) }
+};
+Analytics.TrackEvent("Navigate To Players View", properties);
+```
 
 #### Push notifications
 
