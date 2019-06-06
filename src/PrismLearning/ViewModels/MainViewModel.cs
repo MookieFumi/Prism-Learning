@@ -46,6 +46,7 @@ namespace PrismLearning.ViewModels
             CrashCommand = new DelegateCommand(async () => await Crash());
             NavigateToDetailCommand = new DelegateCommand(async () => await NavigateToDetail());
             SignInCommand = new DelegateCommand(async () => await SignIn());
+            SignOutCommand = new DelegateCommand(async () => await SignOut());
 
             _eventAggregator.GetEvent<MyEvent>()?.Subscribe(async () =>
             {
@@ -53,30 +54,7 @@ namespace PrismLearning.ViewModels
             });
         }
 
-        private async Task SignIn()
-        {
-            try
-            {
-                // Sign-in succeeded.
-                UserInformation userInfo = await Auth.SignInAsync();
-            }
-            catch (Exception exception)
-            {
-                await HandleError(exception);
-            }
-        }
 
-        private async Task Crash()
-        {
-            try
-            {
-                throw new DivideByZeroException();
-            }
-            catch (Exception exception)
-            {
-                await HandleError(exception);
-            }
-        }
 
         public DelegateCommand PanelCommand { get; private set; }
         public DelegateCommand GoToPlayersViewCommand { get; private set; }
@@ -85,6 +63,8 @@ namespace PrismLearning.ViewModels
         public DelegateCommand CrashCommand { get; private set; }
         public DelegateCommand NavigateToDetailCommand { get; private set; }
         public DelegateCommand SignInCommand { get; private set; }
+        public DelegateCommand SignOutCommand { get; private set; }
+
         #region Properties
         public bool IsPanelVisible
         {
@@ -156,6 +136,18 @@ namespace PrismLearning.ViewModels
             base.OnSleep();
         }
 
+        private async Task Crash()
+        {
+            try
+            {
+                throw new DivideByZeroException();
+            }
+            catch (Exception exception)
+            {
+                await HandleError(exception);
+            }
+        }
+
         private async Task GoToPlayersView()
         {
             await NavigationService.NavigateAsync(nameof(PlayersView));
@@ -167,5 +159,37 @@ namespace PrismLearning.ViewModels
             await Task.Delay(2000);
             IsFullscreenLoading = false;
         }
+
+        private async Task SignIn()
+        {
+            try
+            {
+                // Sign-in succeeded.
+                UserInformation userInfo = await Auth.SignInAsync();
+                if (userInfo != null)
+                {
+                    await DialogService.DisplayAlertAsync("Info", $"Login successful! \nAccountId: {userInfo.AccountId} ", "Ok");
+                }
+            }
+            catch (Exception exception)
+            {
+                await HandleError(exception);
+            }
+        }
+
+        private async Task SignOut()
+        {
+            try
+            {
+                Auth.SignOut();
+                await DialogService.DisplayAlertAsync("Info", "Logout successful!", "Ok");
+            }
+            catch (Exception exception)
+            {
+                await HandleError(exception);
+            }
+        }
+
+
     }
 }

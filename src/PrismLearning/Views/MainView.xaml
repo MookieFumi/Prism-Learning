@@ -80,6 +80,14 @@
                         Margin="0,0,0,16"
                         Text="SignIn"
                         Command="{Binding SignInCommand}" />
+                    <Button
+                        CornerRadius="10"
+                        HeightRequest="40"
+                        BackgroundColor="#1a81bc"
+                        TextColor="White"
+                        Margin="0,0,0,16"
+                        Text="SignOut"
+                        Command="{Binding SignOutCommand}" />
                 </StackLayout>
                 <controls:TeamPanel
                     IsVisible="{Binding IsPanelVisible}"
