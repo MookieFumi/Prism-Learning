@@ -52,6 +52,11 @@ namespace PrismLearning.iOS
                 this.myOwnNotificationDelegate.didReceiveNotificationInForeground = false;
             };
 
+#if ENABLE_TEST_CLOUD
+            // requires Xamarin Test Cloud Agent
+            Xamarin.Calabash.Start();
+#endif
+
             return base.FinishedLaunching(uiApplication, launchOptions);
         }
 

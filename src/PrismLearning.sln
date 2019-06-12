@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.DomainService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.DomainService.Test", "PrismLearning.DomainService.Test\PrismLearning.DomainService.Test.csproj", "{C60CF537-6254-450A-99C3-F022C7ECFCD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismLearning.Test", "PrismLearning.Test\PrismLearning.Test.csproj", "{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,18 @@ Global
 		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{C60CF537-6254-450A-99C3-F022C7ECFCD9}.Release|iPhone.Build.0 = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{18570CE3-2FC1-47CA-9476-9AC7975A0DEA}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BFE6C7A-3645-457A-BCCE-72D9F23C87D9} = {C6629214-EB70-40D8-A821-76577DF2A448}
